@@ -22,6 +22,8 @@ Route::get('/dashboard', [\App\Http\Controllers\PostController::class, 'index'])
 
 Route::get('add-post', [\App\Http\Controllers\PostController::class, 'create'])->name('add-post');
 Route::post('store-post', [\App\Http\Controllers\PostController::class, 'store'])->name('store-post');
+Route::get('edit-post/{id}', [\App\Http\Controllers\PostController::class, 'edit'])->name('edit-post');
+Route::put('update-post/{id}', [\App\Http\Controllers\PostController::class, 'update'])->name('update-post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

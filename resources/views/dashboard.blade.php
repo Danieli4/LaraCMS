@@ -18,15 +18,13 @@
                             <p>{{$post->created_at}}</p>
                             <h5 class="card-title"></h5>
                             <p class="card-text">{{$post->text}}</p>
-                            <a href="#" class="btn btn-primary"> Edit</a>
+                            <a href="{{route('edit-post', $post->id)}}" class="btn btn-primary"> Edit</a>
                             <a href="#" class="btn btn-danger"> Delete</a>
                         </div>
                     </div>
                 @endforeach
             </div>
-
         </div>
-
     </div>
 
 </x-app-layout>
