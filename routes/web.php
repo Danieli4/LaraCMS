@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [\App\Http\Controllers\PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('add-post', [\App\Http\Controllers\PostController::class, 'create'])->name('add-post');
+Route::post('store-post', [\App\Http\Controllers\PostController::class, 'store'])->name('store-post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
