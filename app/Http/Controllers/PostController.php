@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent;
 
 class PostController extends Controller
 {
@@ -49,7 +50,13 @@ class PostController extends Controller
         ]);
 
         $post->update($request->all());
+        return redirect()->route('dashboard')->with('status', 'Post '.$post->name.' updated');
+    }
 
-        return redirect()->back()->with('status', 'Post updated');
+    public function delete($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('dashboard')->with('status', 'Post '.$post->name.' deleted');
     }
 }
