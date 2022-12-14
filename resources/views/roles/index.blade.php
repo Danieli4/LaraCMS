@@ -15,14 +15,14 @@
                         {{session('status')}}
                     </div>
                 @endif
-{{--                <a href="{{route('add-role')}}" class="btn btn-success mb-4">Add new role</a>--}}
+                <a href="{{route('roles.create')}}" class="btn btn-success mb-4">Add new role</a>
                 @foreach($roles as $role)
                     <div class="card mb-4">
                         <h5 class="card-header"> {{$role->name}}</h5>
                         <div class="card-body">
                             <h5 class="card-title"></h5>
-{{--                            <a href="{{route('edit-role', $role->id)}}" class="btn btn-primary"> Edit</a>--}}
-{{--                            <form action="{{route('delete-role', $role->id)}}" method="post" style="display:inline-block">--}}
+                            <a href="{{route('roles.edit', $role->id)}}" class="btn btn-primary"> Edit</a>
+                            <form action="{{route('roles.destroy', $role->id)}}" method="post" style="display:inline-block">
                                 @csrf
                                 @method('DELETE')
 

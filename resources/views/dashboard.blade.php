@@ -15,8 +15,10 @@
                         {{session('status')}}
                     </div>
                 @endif
-                <a href="{{route('add-post')}}" class="btn btn-success mb-4">Add new article</a>
-                @foreach($posts as $post)
+                @if(auth()->user()->can('edit post'))
+                    <a href="{{route('add-post')}}" class="btn btn-success mb-4">Add new post</a>
+                @endif
+                    @foreach($posts as $post)
                     <div class="card mb-4">
                         <h5 class="card-header"> {{$post->name}}</h5>
                         <div class="card-body">
